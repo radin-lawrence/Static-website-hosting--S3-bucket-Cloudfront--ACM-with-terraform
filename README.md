@@ -191,7 +191,7 @@ data "aws_route53_zone" "mydomain" {
   private_zone = false
 }
 
-resource "aws_route53_record" "example" {
+resource "aws_route53_record" "record" {
   for_each = {
     for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -211,7 +211,7 @@ resource "aws_route53_record" "example" {
 resource "aws_acm_certificate_validation" "cert_validation" {
   certificate_arn         = aws_acm_certificate.cert.arn
   provider = aws.acm_provider
-  validation_record_fqdns = [for record in aws_route53_record.example : record.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.record : record.fqdn]
 }
 ```
 **Host with CloudFront**
