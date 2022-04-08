@@ -6,7 +6,7 @@ By the time you finish reading this article, you will know how to get your stati
 
 ## Diagram
 
-
+![image](https://user-images.githubusercontent.com/100775027/162364606-cb0a4571-4cd7-4642-b080-f401f7551da1.png)
 - S3 — for storing the static site
 - CloudFront — for serving the static site over SSL
 - AWS Certificate Manager — for generating the SSL certificates
